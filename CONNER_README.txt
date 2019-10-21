@@ -1,5 +1,1 @@
-in main, the enQueue at the bottom is just to test the code, feel free to remove it
-
-Queue is missing code to output all numbers and cout max and min and to delete entire queue
-
-Stack is missing code to delete entire stack
+all we need is the last bit of logic to add/remove specific nodes in queue. im working on the asthetic stuff
