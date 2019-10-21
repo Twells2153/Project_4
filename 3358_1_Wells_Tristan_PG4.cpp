@@ -29,6 +29,14 @@ public:
         return s;
     }
 
+    void deleteStack(Stack* s){
+        while(s->front != NULL){
+            SNode* next = s->front->next;
+            delete(s->front);
+            s->front = next;
+        }
+    }
+
     void push(Stack* s, int k)
     {
         // Create a new LL node
@@ -107,7 +115,13 @@ public:
         q->rear->next = temp;
         q->rear = temp;
     }
-
+    void deleteQueue(Queue* q){
+        while(q->front != NULL){
+            QNode* next = q->front->next;
+            delete(q->front);
+            q->front = next;
+        }
+    }
     QNode* deQueue(Queue* q)
     {
         // If queue is empty, return NULL.
@@ -138,10 +152,10 @@ int main()
 
         cout << "A: Insert new element in the stack (LIFO)" << endl
              << "B: Remove an element from the stack (LIFO)" << endl
-             << "C: Insert new element in the queue ( FIFO )" << endl
+             << "C: Insert new element in the queue (FIFO)" << endl
              << "D. Insert an element at specific location in the queue" << endl
-             << "E. Remove an element from the queue ( FIFO )" << endl
-             << "F. Remove a specific element from the queue" << endl
+             << "E. Remove an element from the queue (FIFO)" << endl
+             << "F. Remove a specific element from the queue (FIFO)" << endl
              << "G.Find Min element in the queue, Max element in the" << endl
              << "queue, and the Average of the queue" << endl
              << "H.Delete the entire stack" << endl
@@ -173,8 +187,10 @@ int main()
                 cout << "G. Find Min element in the queue, Max element in the queue, and the Average of the queue" << endl;
             case 'H':
                  cout << "H.Delete the entire stack" << endl;
+                 s->deleteStack(s);
             case 'I':
                 cout << "I. Delete the entire queue" << endl;
+                q->deleteQueue(q);
             case 'X':
                 cout << "X. Exit the program" << endl << endl;
             default:
@@ -189,6 +205,7 @@ int main()
 	q->enQueue(q, 30);
 	q->enQueue(q, 40);
 	q->enQueue(q, 50);
+	q->deleteQueue(q);
 	QNode* n = q->deQueue(q);
 	if (n != NULL)
 		cout << "Dequeued item is " << n->data;
