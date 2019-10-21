@@ -249,6 +249,39 @@ public:
             q->rear = NULL;
         return temp;
     }
+
+    void deleteAt(Queue* q, int pos){
+        QNode *prev = q->front;
+        QNode *next = q->front->next;
+        QNode *current = q->front;
+
+        for(int i = 0; i < pos; i++){
+            if (i == (pos - 2))
+                prev = current;
+            if (i == pos - 1){
+                prev->next = current->next;
+                delete current;
+            }
+            current = current->next;
+        }
+    }
+
+    //Add item at pos
+    void addAt(Queue* q, int pos){
+        QNode *prev = q->front;
+        QNode *next = q->front->next;
+        QNode *current = q->front;
+
+        for(int i = 0; i < pos; i++){
+            if (i == (pos - 2))
+                prev = current;
+            if (i == pos - 1){
+                prev->next = current->next;
+                delete current;
+            }
+            current = current->next;
+        }
+    }
 };
 
 // Driver code
@@ -282,82 +315,85 @@ int main()
             cout << "Which number: -> ";
             cin >> number;
                 s->push(s, number);
-	    cout << endl;
-	    cout << "Queue: "; q->display();
+            cout << endl;
+            cout << "Queue: "; q->display();
             cout << endl;
             cout << "Stack: "; s->display();
-            cout << endl
+            cout << endl;
         }
         else if(choice == 'B'){
             cout << "B: Remove an element from the stack (LIFO)" << endl;
                 s->pop(s);
-	    cout << endl;
-	    cout << "Queue: "; q->display();
+            cout << endl;
+            cout << "Queue: "; q->display();
             cout << endl;
             cout << "Stack: "; s->display();
-            cout << endl
+            cout << endl;
         }
         else if(choice == 'C'){
             cout << "C: Insert new element in the queue ( FIFO )" << endl;
             cout << "Which number: -> ";
             cin >> number;
                 q->enQueue(q, number);
-	    cout << endl;
-	    cout << "Queue: "; q->display();
+            cout << endl;
+            cout << "Queue: "; q->display();
             cout << endl;
             cout << "Stack: "; s->display();
-            cout << endl
+            cout << endl;
         }
         else if(choice == 'D'){
             cout << "D. Insert an element at specific location in the queue" << endl;
             cout << "Which number: -> ";
             cin >> number;
-	    cout << endl;
-	    cout << "Queue: "; q->display();
+                q->addAt(q, number);
+            cout << endl;
+            cout << "Queue: "; q->display();
             cout << endl;
             cout << "Stack: "; s->display();
-            cout << endl
+            cout << endl;
         }
         else if(choice == 'E'){
             cout << "E. Remove an element from the queue ( FIFO )" << endl;
                 q->deQueue(q);
-	    cout << endl;
-	    cout << "Queue: "; q->display();
+            cout << endl;
+            cout << "Queue: "; q->display();
             cout << endl;
             cout << "Stack: "; s->display();
-            cout << endl
+            cout << endl;
         }
         else if(choice == 'F'){
-             cout << "F. Remove a specific element from the queue" << endl;
-             cout << "Which number: -> ";
-             cin >> number;
-	     cout << endl;
-	     cout << "Queue: "; q->display();
-             cout << endl;
-             cout << "Stack: "; s->display();
-             cout << endl
+            cout << "F. Remove a specific element from the queue" << endl;
+            cout << "Which number: -> ";
+            cin >> number;
+                q->deleteAt(q, number);
+            cout << endl;
+            cout << "Queue: "; q->display();
+            cout << endl;
+            cout << "Stack: "; s->display();
+            cout << endl;
         }
         else if(choice == 'G'){
-            cout << "G. Find Min element in the queue, Max element in the queue, and the Average of the queue" << endl;
+            cout << "G. Find Min element in the queue, Max element in the queue,"
+                 << "and the Average of the queue" << endl;
             cout << "Min: " << q->min(q) << " Max: " << q->max(q) << " Average: " << q->average(q);
         }
         else if(choice == 'H'){
             cout << "H.Delete the entire stack" << endl;
                  s->deleteStack(s);
-	    cout << endl;
-	    cout << "Queue: "; q->display();
+            cout << endl;
+            cout << "Queue: "; q->display();
             cout << endl;
             cout << "Stack: "; s->display();
-            cout << endl
+            cout << endl;
         }
         else if(choice == 'I'){
             cout << "I. Delete the entire queue" << endl;
                 q->deleteQueue(q);
-	    cout << endl;
-	    cout << "Queue: "; q->display();
+            cout << endl;
+            cout << "Queue: "; q->display();
             cout << endl;
             cout << "Stack: "; s->display();
-            cout << endl
+            cout << endl;
         }
         else if(choice == 'X'){
             cout << "X. Exit the program" << endl << endl;
@@ -376,4 +412,3 @@ int main()
 
 	return 0;
 }
-
